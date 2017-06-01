@@ -1,0 +1,4 @@
+*
+!*.java
+!*.md
+!\.gitignore
