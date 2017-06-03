@@ -1,5 +1,4 @@
 /*
- * From https://gist.github.com/madan712/4509039
  */
 import java.time.Instant;
 import java.time.Duration;
