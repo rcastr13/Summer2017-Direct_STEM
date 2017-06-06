@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.Date;
 
 public class PingIP {
 	
 	private String domainOne, domainTwo, domainThree;
 	private Boolean stop = false;
+	private int count = 0;
 
 	public PingIP() {}
 	
@@ -43,9 +45,7 @@ public class PingIP {
 						 * Then, write both the ping data and date
 						 * it was received.
 						 */
-			
-						writeToFile(s + "\n", fileName);
-		
+						sortString(s, fileName);
 					}
 
 				}catch(Exception e){
@@ -70,8 +70,17 @@ public class PingIP {
 	  }
   }
   
-  public void sortString() {
+  public void sortString(String s, String fileName) {
+	 
+	  if (count > 3) { 
 	  
+		String[] ping = s.split(" ");
+		 
+		writeToFile(ping[4].substring(5, ping[4].length() - 2) + ", " + System.currentTimeMillis() + "\n", fileName);
+	 
+	 }
+	 
+	 count++;
   }
 
 	public void setDomainOne(String domainOne) {
